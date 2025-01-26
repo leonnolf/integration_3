@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "devDependencies": {
+    "@fluejs/noscroll": "^1.0.0",
     "vite": "^6.0.5"
   },
   "dependencies": {

@@ -1,73 +1,100 @@
 <!doctype html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="src/style.css" />
     <title>Christophe Plantin: De Meesterdrukker</title>
-  </head>
-  <body>
+</head>
+<body>
     <header>
-      <div class="headline">
-        <h1>Christophe Plantin</h1>
-        <p><span class="subtitle">De Meesterdrukker van Antwerpen</span></p>
-      </div>
+        <div class="headline">
+            <h1>Christophe Plantin</h1>
+            <p><span class="subtitle">De Meesterdrukker van Antwerpen</span></p>
+        </div>
     </header>
 
     <div class="progress-bar"></div>
     <nav>
-      <a href="#chapter1">Hoofdstuk 1</a>
-      <a href="#chapter2">Hoofdstuk 2</a>
-      <a href="#chapter3">Hoofdstuk 3</a>
-      <a href="#slot">Slot</a>
+        <a href="#chapter1">Hoofdstuk 1</a>
+        <a href="#chapter2">Hoofdstuk 2</a>
+        <a href="#chapter3">Hoofdstuk 3</a>
+        <a href="#slot">Slot</a>
     </nav>
 
     <main>
-      <div>
-        <img src="assets/botom.png" alt="botom" class="botom" />
-        <img src="assets/press.png" alt="press" class="press" />
-        <img src="assets/handle.png" alt="handle" class="handle" />
-        <img src="assets/top.png" alt="top" class="top" />
-      </div>
-      <section id="chapter1" class="chapter">
+      <section id="chapter0" class="chapter">
         <div class="content">
-          <h2>A Dream Phenomenon Takes Place at NCity</h2>
-          <div class="chapter-content">
-            <p>
-              Ik was een visionair, maar ook een man van risico's. In mijn streven om mijn drukkerij te laten groeien, investeerde ik zwaar in nieuwe technologieën en materialen...
-            </p>
-          </div>
+            <h2>Intro</h2>
+            <div>
+                <img src="assets/plantin.png" alt="plantin" class="plantin" />
+            </div>
+            <div class="speech-bubble">
+                <p>
+                    Ik was een visionair, maar ook een man van risico's. In mijn streven om mijn drukkerij te laten groeien, investeerde ik zwaar in nieuwe technologieën en materialen...
+                </p>
+            </div>
         </div>
+    </section>
+        
+        <div class="press-container">
+            <div class="press-images">
+                <img src="assets/botom.png" alt="Bottom of press" class="bottom" />
+                <img src="assets/press.png" alt="Middle press structure" class="press" />
+                <img src="assets/handle.png" alt="Handle of the press" class="handle" />
+                <img src="assets/top.png" alt="Top of press" class="top" />
+            </div>
+            <audio id="handle-sound" src="assets/sound/Krakend_Hout.mp3" preload="auto"></audio>
+        </div>
+
+        <section id="chapter1" class="chapter">
+          <div class="content">
+              <h2>A Dream Phenomenon Takes Place at NCity</h2>
+              <div class="video-container">
+                  <video id="animation-video" width="100%" muted>
+                      <source src="assets/video.mp4" type="video/mp4">
+                      Your browser does not support the video tag.
+                  </video>
+              </div>
+              <div class="chapter-content">
+                  <p>
+                      Ik was een visionair, maar ook een man van risico's. In mijn streven om mijn drukkerij te laten groeien, investeerde ik zwaar in nieuwe technologieën en materialen...
+                  </p>
+                  <div>
+                      <img src="assets/chapter 1.png" alt="chapter1">
+                  </div>
+              </div>
+          </div>
       </section>
 
-      <section id="chapter2" class="chapter">
-        <div class="content">
-          <h2>Antwerpen in Chaos: Drukker Overleeft Economische Storm met Slimme Strategie</h2>
-          <div class="chapter-content">
-            <p>
-              Antwerpen was in mijn tijd een stad van kansen, maar ook van gevaar. De politieke instabiliteit en religieuze conflicten eisten hun tol op de economie. Klanten trokken zich terug en mijn drukkerij voelde de klappen...
-            </p>
-          </div>
-        </div>
-      </section>
+        <section id="chapter2" class="chapter">
+            <div class="content">
+                <h2>Antwerpen in Chaos: Drukker Overleeft Economische Storm met Slimme Strategie</h2>
+                <div class="chapter-content">
+                    <p>
+                        Antwerpen was in mijn tijd een stad van kansen, maar ook van gevaar. De politieke instabiliteit en religieuze conflicten eisten hun tol op de economie. Klanten trokken zich terug en mijn drukkerij voelde de klappen...
+                    </p>
+                </div>
+            </div>
+        </section>
 
-      <section id="chapter3" class="chapter">
-        <div class="content">
-          <h2>Overleven in Oorlogstijd: Drukker Herbouwt Bedrijf na Spaanse Verwoesting</h2>
-          <div class="chapter-content">
-            <p>
-              Het dieptepunt kwam tijdens de verwoestende Spaanse aanvallen op Antwerpen. Chaos, vernieling, en angst beheersten de stad. Mijn drukkerij werd niet gespaard van de gevolgen...
-            </p>
-          </div>
-        </div>
-      </section>
+        <section id="chapter3" class="chapter">
+            <div class="content">
+                <h2>Overleven in Oorlogstijd: Drukker Herbouwt Bedrijf na Spaanse Verwoesting</h2>
+                <div class="chapter-content">
+                    <p>
+                        Het dieptepunt kwam tijdens de verwoestende Spaanse aanvallen op Antwerpen. Chaos, vernieling, en angst beheersten de stad. Mijn drukkerij werd niet gespaard van de gevolgen...
+                    </p>
+                </div>
+            </div>
+        </section>
 
-      <section id="slot" class="slot">
-        <p>
-          Ondanks deze beproevingen heb ik nooit opgegeven. Mijn verhaal is er één van vastberadenheid en veerkracht. Vandaag worden mijn werken gekoesterd als meesterstukken, en mijn naam leeft voort...
-        </p>
-      </section>
+        <section id="slot" class="slot">
+            <p>
+                Ondanks deze beproevingen heb ik nooit opgegeven. Mijn verhaal is er één van vastberadenheid en veerkracht. Vandaag worden mijn werken gekoesterd als meesterstukken, en mijn naam leeft voort...
+            </p>
+        </section>
     </main>
     <script type="module" src="src/script.js"></script>
-  </body>
+</body>
 </html>
