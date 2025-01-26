@@ -16,24 +16,31 @@
 
     <div class="progress-bar"></div>
     <nav>
-        <a href="#chapter1">Hoofdstuk 1</a>
-        <a href="#chapter2">Hoofdstuk 2</a>
-        <a href="#chapter3">Hoofdstuk 3</a>
-        <a href="#slot">Slot</a>
-    </nav>
+      <div class="hamburger" id="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+      </div>
+      <div class="nav-links" id="nav-links">
+          <a href="#chapter1">Hoofdstuk 1</a>
+          <a href="#chapter2">Hoofdstuk 2</a>
+          <a href="#chapter3">Hoofdstuk 3</a>
+          <a href="#slot">Slot</a>
+      </div>
+  </nav>
 
     <main>
       <section id="chapter0" class="chapter">
         <div class="content">
             <h2>Intro</h2>
-            <div>
+            <div class="intro_container"> <!-- Added a new div to contain both image and text -->
                 <img src="assets/plantin.png" alt="plantin" class="plantin" />
-            </div>
-            <div class="intro_content">
-                <p>
-                  Welkom op mijn verhaal, ik ben Christophe Plantin. Misschien ken je mij als een van de meest invloedrijke drukkers uit de geschiedenis. Maar mijn reis naar succes was allesbehalve eenvoudig. Laat me je meenemen naar drie momenten waarop ik aan de rand van de afgrond stond, bijna alles verloor, en toch wist door te zetten.
-                  De eerste keer: Risicovolle investeringen 
-                </p>           
+                <div class="intro_text"> <!-- New div for text -->
+                    <p>
+                        Welkom op mijn verhaal, ik ben Christophe Plantin. Misschien ken je mij als een van de meest invloedrijke drukkers uit de geschiedenis. Maar mijn reis naar succes was allesbehalve eenvoudig. Laat me je meenemen naar drie momenten waarop ik aan de rand van de afgrond stond, bijna alles verloor, en toch wist door te zetten.
+                        De eerste keer: Risicovolle investeringen 
+                    </p>
+                </div>
             </div>
         </div>
     </section>
@@ -53,13 +60,18 @@
               
             <div class="video-container">
               <h2 class="chapter-title">Visionaire Drukker Failleert Door Risicovolle Investeringen</h2>
+              <div class="opdevideo">
+                <img src="assets/chapter 1.png" alt="Illustratie van Plantin" class="chapter-image" />
+                <p class="hoofdstuk_content">
+                Ik was een visionair, maar ook een man van risico's. In mijn streven om mijn drukkerij te laten groeien, investeerde ik zwaar in nieuwe technologieën en materialen. Maar zoals je kunt raden, zijn investeringen nooit zonder gevaar. De winsten bleven uit en mijn schuldeisers stonden op de stoep. Het leek alsof mijn droom in rook opging. Maar ik gaf niet op. Ik herstructureerde mijn bedrijf en richtte mijn focus op kwalitatieve drukken, wat uiteindelijk mijn redding werd.              </p>
+              
+              </div>
               <video id="animation-video" width="60%" muted>
                   <source src="assets/video.mp4" type="video/mp4" preload="auto">
                   Your browser does not support the video tag.
               </video>
-              <p class="video-description">
-                Ik was een visionair, maar ook een man van risico's. In mijn streven om mijn drukkerij te laten groeien, investeerde ik zwaar in nieuwe technologieën en materialen. Maar zoals je kunt raden, zijn investeringen nooit zonder gevaar. De winsten bleven uit en mijn schuldeisers stonden op de stoep. Het leek alsof mijn droom in rook opging. Maar ik gaf niet op. Ik herstructureerde mijn bedrijf en richtte mijn focus op kwalitatieve drukken, wat uiteindelijk mijn redding werd.              </p>
-              <img src="assets/chapter 1.png" alt="Illustratie van Plantin" class="chapter-image" />
+             
+              
               <div class="headline-decor">
                   <hr class="decor-line" />
                   <hr class="decor-line" />
@@ -67,6 +79,46 @@
           </div>
           </div>
       </section>
+
+      <div class="press-container">
+        <div class="press-images">
+            <img src="assets/botom.png" alt="Bottom of press" class="bottom" />
+            <img src="assets/press.png" alt="Middle press structure" class="press" />
+            <img src="assets/handle.png" alt="Handle of the press" class="handle" />
+            <img src="assets/top.png" alt="Top of press" class="top" />
+        </div>
+          <audio id="handle-sound" src="assets/sound/Krakend_Hout.mp3" preload="auto"></audio>
+      </div>
+        <section id="chapter2" class="chapter">
+          <div class="content">
+              
+            <div class="video-container">
+              <h2 class="chapter-title">Antwerpen in Chaos: Drukker Overleeft Economische Storm met Slimme Strategie</h2>
+              <div class="opdevideo">
+                <img src="assets/chapter 2.png" alt="Illustratie van Plantin" class="chapter-image" />
+                <p class="hoofdstuk_content">
+                  Antwerpen was in mijn tijd een stad van kansen, maar ook van gevaar. De politieke instabiliteit en religieuze conflicten eisten hun tol op de economie. Klanten trokken zich terug en mijn drukkerij voelde de klappen. Mijn financiële buffer slonk snel. Toch wist ik, met steun van enkele trouwe zakenpartners, mijn hoofd boven water te houden. Ik paste mijn strategie aan en drukte werken die in tijden van onrust gretig aftrek vonden.
+                </p>              
+              </div>
+              <video id="animation-video" width="60%" muted>
+                  <source src="assets/video.mp4" type="video/mp4" preload="auto">
+                  Your browser does not support the video tag.
+              </video>
+             
+              
+              <div class="headline-decor">
+                  <hr class="decor-line" />
+                  <hr class="decor-line" />
+              </div>
+          </div>
+          </div>
+      </section>
+        <audio id="handle-sound" src="assets/sound/Krakend_Hout.mp3" preload="auto"></audio>
+    </div>
+
+      <div>
+        <img src="assets/chapter 3.png" alt="">
+      </div>
 
     </main>
     <script type="module" src="src/script.js"></script>

@@ -13,9 +13,11 @@ document.addEventListener("DOMContentLoaded", function () {
     const handleImage = document.querySelector(".handle"); // Selecteer de handle afbeelding
     const pressContainer = document.querySelector(".press-container");
     const handleSound = document.getElementById("handle-sound"); // Selecteer het audio-element
+    const video = document.getElementById("animation-video");
+    const opdevideo = document.querySelector(".opdevideo");
     let isDragging = false;
     let rotation = 0;
-
+     
     // Progress bar logic
     window.addEventListener("scroll", () => {
         const scrollTop = window.scrollY;
@@ -124,24 +126,49 @@ document.addEventListener("DOMContentLoaded", function () {
     // Update this function to handle the speech bubble
 
 
-    const video = document.getElementById("animation-video");
-
-    // Ensure the video doesn't play automatically
     video.pause();
 
-    // Use GSAP to control the video playback
+    // ScrollTrigger om de video af te spelen
     gsap.to(video, {
-      scrollTrigger: {
-        trigger: "#animation-video", // The video element
-        start: "top 10%", // Start playing when in view
-        end: "bottom bottom", // Stop when scrolled out
-        scrub: 1, // Sync playback with scroll
-        markers: true,
-      },
-      currentTime: video.duration, // Progress through the video's duration
-      ease: "none",
+        scrollTrigger: {
+            trigger: video,
+            start: "top top",
+            end: "bottom bottom",
+            scrub: 1,
+            markers: true,
+            onEnterBack: () => {
+                // Zorg ervoor dat de video wordt gepauzeerd als we terug scrollen
+                video.pause();
+            },
+            onLeave: () => {
+                // Laat de video afspelen tot het einde
+                video.play();
+                video.onended = () => {
+                    // Toon de opdevideo div na het einde van de video
+                    gsap.to(opdevideo, { opacity: 1, duration: 1, display: 'flex' });
+                };
+            },
+        },
+        currentTime: video.duration,
+        ease: "none",
+    });
+
+    // Zorg ervoor dat de opdevideo div verborgen is bij het laden
+    opdevideo.style.opacity = 0; // Begin met een transparante status
+    opdevideo.style.display = 'none'; // Verberg de div in het begin
+
+    // ScrollTrigger voor het animatie-effect van de opdevideo
+    ScrollTrigger.create({
+        trigger: opdevideo,
+        start: "top 80%", // Pas aan naar wens
+        end: "top 50%",
+        onEnter: () => {
+            gsap.to(opdevideo, { opacity: 1, duration: 1 });
+        },
     });
 });
+
+
 
 document.addEventListener("DOMContentLoaded", function () {
     const videoDescription = document.querySelector(".video-description");
@@ -189,4 +216,9 @@ document.addEventListener('DOMContentLoaded', () => {
         introContent.classList.add('show');
         plantinImage.classList.add('show');
     }, 300); // Adjust delay as needed
+});
+
+document.getElementById("hamburger").addEventListener("click", () => {
+    const navLinks = document.getElementById("nav-links");
+    navLinks.classList.toggle("active"); // Toggle de 'active' class voor weergave
 });
