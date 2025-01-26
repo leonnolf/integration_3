@@ -147,30 +147,9 @@ h2 {
     max-width: 18.75rem; /* 30rem */
 }
 
-.speech-bubble {
-    position: relative;
-    background: var(--accent-color);
-    color: #fff; /* Witte tekst voor contrast */
-    padding: 1rem;
-    border-radius: 10px;
-    max-width: 30rem; /* Maximale breedte van de tekstballon */
-    margin: 1rem auto; /* Centraal uitlijnen */
-    text-align: center; /* Tekst centreren */
-    opacity: 0; /* Start met verborgen */
-    transform: translateY(20px); /* Start iets naar beneden voor animatie */
-    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out; /* Animatie-effecten */
-}
 
-.speech-bubble::after {
-    content: '';
-    position: absolute;
-    bottom: 100%; /* Posiție boven de ballon */
-    left: 50%;
-    margin-left: -10px; /* Center de punt */
-    border-width: 10px; /* Grootte van de punt */
-    border-style: solid;
-    border-color: transparent transparent var(--accent-color) transparent; /* Puntkleur */
-}
+
+
 
 .video-container {
     position: relative;

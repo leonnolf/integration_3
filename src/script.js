@@ -121,21 +121,8 @@ document.addEventListener("DOMContentLoaded", function () {
     // Zorg ervoor dat je GSAP hebt geladen in je project
 
     // Wacht tot de DOM is geladen
-    document.addEventListener('DOMContentLoaded', () => {
-        // Selecteer de tekstballon
-        const speechBubble = document.querySelector('.speech-bubble');
+    // Update this function to handle the speech bubble
 
-        // Voeg een animatie toe wanneer de pagina is geladen
-        gsap.fromTo(speechBubble, 
-            { opacity: 0, y: 20 }, // Beginpositie
-            { 
-                opacity: 1, 
-                y: 0, 
-                duration: 1, 
-                ease: 'power2.out' // Animatie effect
-            }
-        );
-    });
 
     const video = document.getElementById("animation-video");
 
