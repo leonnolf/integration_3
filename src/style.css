@@ -7,11 +7,12 @@
     --font-medium: 1.5rem;
     --font-small: 1rem;
     --section-padding: 5rem 10%;
+    --newspaper-font: 'Georgia', serif;
   }
   
   body {
     margin: 0;
-    font-family: 'Times New Roman', serif;
+    font-family: var(--newspaper-font);
     background-color: var(--main-bg);
     color: var(--main-text);
     line-height: 1.8;
@@ -74,24 +75,25 @@
     padding: var(--section-padding);
     border-left: 8px solid var(--accent-color);
     background: #f5f5f5;
-    animation: fadeInUp 2s ease-in-out;
   }
   
   h2 {
-    color: var(--accent-color);
-    font-size: var(--font-medium);
+    font-family: var(--newspaper-font);
+    font-size: 3rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 1.2;
+    letter-spacing: 0.1rem;
+    margin: 2rem 0;
+    background-color: var(--main-bg);
+    padding: 1rem;
+    border-bottom: 2px solid var(--accent-color);
+    color: var(--main-text);
   }
   
-  @media (max-width: 768px) {
-    .headline h1 {
-      font-size: 2rem;
-    }
-  
-    .headline .subtitle {
-      font-size: 1rem;
-    }
-  
-    nav a {
-      font-size: 1rem;
-    }
+  .chapter-content {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
   }
