@@ -74,7 +74,7 @@ nav a:hover {
     margin: 3.125rem auto; /* 5rem */
     padding: var(--section-padding);
     border-left: 0.5rem solid var(--accent-color); /* 8px */
-    background: #f5f5f5;
+    background: #ffffff;
 }
 
 h2 {
@@ -154,17 +154,54 @@ h2 {
 .video-container {
     position: relative;
     width: 100%;
-    height: 200vh; /* Zet een hoogte voor de video container */
+    height: auto;
     display: flex;
-    justify-content: center; /* Center de video horizontaal */
-    align-items: center; /* Center de video verticaal */
-    overflow: hidden; /* Verberg de overflow */
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
 }
 
+
 #animation-video {
-    width: 100%;
-    height: auto; /* Zorg ervoor dat de video zich aanpast aan de container */
-    object-fit: cover; /* Zorg ervoor dat de video goed past */
+    width: 80%; /* Video iets smaller zodat het mooier uitkomt */
+    height: auto;
+    display: block;
+    object-fit: cover;
+    z-index: 1;
+    margin: 0 auto; /* Zorg ervoor dat de video gecentreerd is */
+}
+
+.video-overlay {
+    position: absolute;
+    bottom: 5%; /* Plaats de tekst en afbeelding onderaan */
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    opacity: 0; /* Begin met onzichtbaar */
+    transition: opacity 0.5s ease-in-out;
+}
+
+.video-description {
+    position: absolute;
+    bottom: 20%; /* Net boven de afbeelding */
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.5rem;
+    color: var(--main-text);
+    text-align: center;
+    z-index: 10;
+    opacity: 0; /* Verborgen totdat de animatie actief wordt */
+    transition: opacity 1s ease-in-out; /* Fade-in effect */
+}
+
+.video-text {
+    font-size: 1.875rem; /* Tekst groter maken */
+    color: #fff; /* Witte tekst */
+    background: rgba(0, 0, 0, 0.6); /* Semi-transparante achtergrond */
+    padding: 0.625rem 1.25rem;
+    border-radius: 0.3125rem; /* Ronde hoeken */
+    margin-bottom: 1rem;
+    z-index: 20;
 }
 
 /* Verberg de chapter-content initieel */
@@ -174,3 +211,74 @@ h2 {
     transition: opacity 0.5s ease-in-out;
 }
 
+.chapter-title {
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2.5rem;
+    color: var(--main-text);
+    text-align: center;
+    z-index: 10;
+}
+
+.chapter-image {
+    position: absolute;
+    bottom: 10%; /* Lager dan de tekst */
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 30%; /* Behoud een mooie grootte */
+    z-index: 10;
+    opacity: 0; /* Verborgen totdat de animatie actief wordt */
+    transition: opacity 1s ease-in-out; /* Fade-in effect */
+}
+
+.headline-decor {
+    position: absolute;
+    top: 15%; /* Position it below the h2 */
+    left: 50%;
+    transform: translateX(-50%); /* Center horizontally */
+    display: flex;
+    align-items: center; /* Center vertically */
+}
+
+.decor-line {
+    border: none;
+    height: 2px; /* Thickness of the line */
+    background-color: var(--accent-color); /* Color of the line */
+    flex: 1; /* Allow the lines to grow */
+    margin: 0 10px; /* Spacing between lines and icon */
+}
+
+.intro_content {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+.intro_content.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.plantin {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+.plantin.show {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Media Queries for responsiveness */
+@media (max-width: 768px) {
+    h2 {
+        font-size: 1.5rem; /* Adjust font size for smaller screens */
+    }
+
+    .plantin {
+        max-width: 15rem; /* Make image smaller on mobile */
+    }
+}

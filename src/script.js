@@ -134,11 +134,59 @@ document.addEventListener("DOMContentLoaded", function () {
       scrollTrigger: {
         trigger: "#animation-video", // The video element
         start: "top 10%", // Start playing when in view
-        end: "bottom 1%", // Stop when scrolled out
+        end: "bottom bottom", // Stop when scrolled out
         scrub: 1, // Sync playback with scroll
         markers: true,
       },
       currentTime: video.duration, // Progress through the video's duration
       ease: "none",
     });
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+    const videoDescription = document.querySelector(".video-description");
+    const chapterImage = document.querySelector(".chapter-image");
+
+    gsap.timeline({
+        scrollTrigger: {
+            trigger: "#animation-video", // Video is de trigger
+            start: "top center", // Start animatie zodra de video in het midden verschijnt
+            end: "bottom center", // Eindig wanneer de video uit beeld is
+            scrub: 1, // Synchroniseer met scrollen
+        },
+    })
+    .to(videoDescription, { opacity: 1, duration: 1 }) // Fade-in voor tekst
+    .to(chapterImage, { opacity: 1, duration: 1 }, "-=0.5"); // Fade-in voor afbeelding
+});
+
+const video = document.getElementById("animation-video");
+const videoDescription = document.querySelector(".video-description");
+const chapterImage = document.querySelector(".chapter-image");
+
+gsap.to(video, {
+    scrollTrigger: {
+        trigger: "#animation-video",
+        start: "top 10%",
+        end: "bottom bottom",
+        scrub: 1,
+        markers: true,
+        onLeave: () => {
+            // Laat tekst en afbeelding verschijnen na de video
+            gsap.to(videoDescription, { opacity: 1, duration: 1 });
+            gsap.to(chapterImage, { opacity: 1, duration: 1 });
+        },
+    },
+    currentTime: video.duration,
+    ease: "none",
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const introContent = document.querySelector('.intro_content');
+    const plantinImage = document.querySelector('.plantin');
+
+    // Add the 'show' class after a slight delay
+    setTimeout(() => {
+        introContent.classList.add('show');
+        plantinImage.classList.add('show');
+    }, 300); // Adjust delay as needed
 });
