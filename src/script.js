@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
         start: "top top",
         end: "bottom top",
         pin: true,
-        markers: true,
+        
         onEnter: () => {
             disablePageScroll();
             pressImages.addEventListener('mousedown', onMouseDown);
@@ -109,7 +109,7 @@ document.addEventListener("DOMContentLoaded", function () {
             start: "top top",
             end: "bottom bottom",
             scrub: 1,
-            markers: true,
+            
             onEnterBack: () => video.pause(),
             onLeave: () => {
                 video.play();
@@ -161,7 +161,7 @@ gsap.to(video, {
         start: "top 10%",
         end: "bottom bottom",
         scrub: 1,
-        markers: true,
+        
         onLeave: () => {
             gsap.to(videoDescription, { opacity: 1, duration: 1 });
             gsap.to(chapterImage, { opacity: 1, duration: 1 });
