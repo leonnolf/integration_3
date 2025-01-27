@@ -4,21 +4,19 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-// Enable scrolling by default
 enablePageScroll();
 
 document.addEventListener("DOMContentLoaded", function () {
     const progressBar = document.querySelector(".progress-bar");
     const pressImages = document.querySelector(".press-images");
-    const handleImage = document.querySelector(".handle"); // Selecteer de handle afbeelding
+    const handleImage = document.querySelector(".handle");
     const pressContainer = document.querySelector(".press-container");
-    const handleSound = document.getElementById("handle-sound"); // Selecteer het audio-element
+    const handleSound = document.getElementById("handle-sound");
     const video = document.getElementById("animation-video");
     const opdevideo = document.querySelector(".opdevideo");
     let isDragging = false;
     let rotation = 0;
-     
-    // Progress bar logic
+
     window.addEventListener("scroll", () => {
         const scrollTop = window.scrollY;
         const docHeight = document.body.scrollHeight - window.innerHeight;
@@ -36,13 +34,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 end: "top 50%",
                 toggleActions: "play none none reverse",
             },
-        })
-        .to(content, { opacity: 1, display: "block", duration: 1 });
+        }).to(content, { opacity: 1, display: "block", duration: 1 });
     });
 
-    // Enable scrolling on press image click
     pressImages.addEventListener("click", () => {
-        console.log("Press image clicked - enabling scroll");
         enablePageScroll();
         const nextChapter = document.querySelector("#chapter1");
         if (nextChapter) {
@@ -50,34 +45,26 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // Scroll blocking for the press container with markers
     ScrollTrigger.create({
         trigger: pressContainer,
-        start: "top top", // When the top of the container hits the top of the viewport
-        end: "bottom top", // When the bottom of the container hits the top of the viewport
+        start: "top top",
+        end: "bottom top",
         pin: true,
-        markers: true, // Enable markers for debugging
+        markers: true,
         onEnter: () => {
-            console.log("Scroll disabled - press container entered");
             disablePageScroll();
-
-            // Start mouse event listeners
             pressImages.addEventListener('mousedown', onMouseDown);
             document.addEventListener('mousemove', onMouseMove);
             document.addEventListener('mouseup', onMouseUp);
         },
         onLeave: () => {
-            console.log("Scroll enabled - press container left");
             enablePageScroll();
-            // Clean up mouse event listeners
             pressImages.removeEventListener('mousedown', onMouseDown);
             document.removeEventListener('mousemove', onMouseMove);
             document.removeEventListener('mouseup', onMouseUp);
         },
         onLeaveBack: () => {
-            console.log("Scroll enabled - leaving back");
             enablePageScroll();
-            // Clean up mouse event listeners
             pressImages.removeEventListener('mousedown', onMouseDown);
             document.removeEventListener('mousemove', onMouseMove);
             document.removeEventListener('mouseup', onMouseUp);
@@ -86,49 +73,36 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function onMouseDown(e) {
         isDragging = true;
-        handleImage.style.transition = 'none'; // Disable transition for smooth dragging
-        e.preventDefault(); // Prevent default behavior to avoid selecting the image
-
-        // Start playing the sound immediately when dragging starts
-        handleSound.currentTime = 0; // Reset sound to start
-        handleSound.play(); // Play sound
+        handleImage.style.transition = 'none';
+        e.preventDefault();
+        handleSound.currentTime = 0;
+        handleSound.play();
     }
 
     function onMouseMove(e) {
         if (isDragging) {
-            // Calculate the rotation based on mouse movement (corrected)
-            const deltaX = -e.movementX; // Negate to fix rotation direction
-            // Update rotation, limit to a maximum of 45 degrees to the right
+            const deltaX = -e.movementX;
             if (rotation < 45) {
-                rotation += deltaX * 0.5; // Adjust rotation sensitivity for faster rotation
-                if (rotation > 45) rotation = 45; // Clamp to 45 degrees
+                rotation += deltaX * 0.5;
+                if (rotation > 45) rotation = 45;
             }
-            handleImage.style.transform = `translate(-50%, -50%) rotate(${rotation}deg)`; // Apply rotation only to the handle
+            handleImage.style.transform = `translate(-50%, -50%) rotate(${rotation}deg)`;
         }
     }
 
     function onMouseUp() {
         isDragging = false;
-        handleImage.style.transition = 'transform 0.5s ease'; // Re-enable transition for final rotation
-        // Reset the rotation immediately if it reaches 45 degrees
+        handleImage.style.transition = 'transform 0.5s ease';
         if (rotation >= 45) {
-            console.log("Rotation complete - resetting position");
-            rotation = 0; // Reset to original position
-            handleImage.style.transform = `translate(-50%, -50%) rotate(0deg)`; // Reset to initial position
-            handleSound.pause(); // Stop the sound when resetting
-            handleSound.currentTime = 0; // Reset sound to start
+            rotation = 0;
+            handleImage.style.transform = `translate(-50%, -50%) rotate(0deg)`;
+            handleSound.pause();
+            handleSound.currentTime = 0;
         }
     }
 
-    // Zorg ervoor dat je GSAP hebt geladen in je project
-
-    // Wacht tot de DOM is geladen
-    // Update this function to handle the speech bubble
-
-
     video.pause();
 
-    // ScrollTrigger om de video af te spelen
     gsap.to(video, {
         scrollTrigger: {
             trigger: video,
@@ -136,15 +110,10 @@ document.addEventListener("DOMContentLoaded", function () {
             end: "bottom bottom",
             scrub: 1,
             markers: true,
-            onEnterBack: () => {
-                // Zorg ervoor dat de video wordt gepauzeerd als we terug scrollen
-                video.pause();
-            },
+            onEnterBack: () => video.pause(),
             onLeave: () => {
-                // Laat de video afspelen tot het einde
                 video.play();
                 video.onended = () => {
-                    // Toon de opdevideo div na het einde van de video
                     gsap.to(opdevideo, { opacity: 1, duration: 1, display: 'flex' });
                 };
             },
@@ -153,14 +122,12 @@ document.addEventListener("DOMContentLoaded", function () {
         ease: "none",
     });
 
-    // Zorg ervoor dat de opdevideo div verborgen is bij het laden
-    opdevideo.style.opacity = 0; // Begin met een transparante status
-    opdevideo.style.display = 'none'; // Verberg de div in het begin
+    opdevideo.style.opacity = 0;
+    opdevideo.style.display = 'none';
 
-    // ScrollTrigger voor het animatie-effect van de opdevideo
     ScrollTrigger.create({
         trigger: opdevideo,
-        start: "top 80%", // Pas aan naar wens
+        start: "top 80%",
         end: "top 50%",
         onEnter: () => {
             gsap.to(opdevideo, { opacity: 1, duration: 1 });
@@ -168,22 +135,20 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-
-
 document.addEventListener("DOMContentLoaded", function () {
     const videoDescription = document.querySelector(".video-description");
     const chapterImage = document.querySelector(".chapter-image");
 
     gsap.timeline({
         scrollTrigger: {
-            trigger: "#animation-video", // Video is de trigger
-            start: "top center", // Start animatie zodra de video in het midden verschijnt
-            end: "bottom center", // Eindig wanneer de video uit beeld is
-            scrub: 1, // Synchroniseer met scrollen
+            trigger: "#animation-video",
+            start: "top center",
+            end: "bottom center",
+            scrub: 1,
         },
     })
-    .to(videoDescription, { opacity: 1, duration: 1 }) // Fade-in voor tekst
-    .to(chapterImage, { opacity: 1, duration: 1 }, "-=0.5"); // Fade-in voor afbeelding
+    .to(videoDescription, { opacity: 1, duration: 1 })
+    .to(chapterImage, { opacity: 1, duration: 1 }, "-=0.5");
 });
 
 const video = document.getElementById("animation-video");
@@ -198,7 +163,6 @@ gsap.to(video, {
         scrub: 1,
         markers: true,
         onLeave: () => {
-            // Laat tekst en afbeelding verschijnen na de video
             gsap.to(videoDescription, { opacity: 1, duration: 1 });
             gsap.to(chapterImage, { opacity: 1, duration: 1 });
         },
@@ -211,14 +175,64 @@ document.addEventListener('DOMContentLoaded', () => {
     const introContent = document.querySelector('.intro_content');
     const plantinImage = document.querySelector('.plantin');
 
-    // Add the 'show' class after a slight delay
     setTimeout(() => {
         introContent.classList.add('show');
         plantinImage.classList.add('show');
-    }, 300); // Adjust delay as needed
+    }, 300);
 });
 
 document.getElementById("hamburger").addEventListener("click", () => {
     const navLinks = document.getElementById("nav-links");
-    navLinks.classList.toggle("active"); // Toggle de 'active' class voor weergave
+    navLinks.classList.toggle("active");
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+    const progressBar = document.querySelector(".progress-bar");
+    const chapters = document.querySelectorAll(".chapter");
+
+    window.addEventListener("scroll", () => {
+        const scrollTop = window.scrollY;
+        const docHeight = document.body.scrollHeight - window.innerHeight;
+        const progress = (scrollTop / docHeight) * 100;
+        progressBar.style.width = `${progress}%`;
+    });
+
+    const applyScrollAnimations = (chapter) => {
+        const content = chapter.querySelector(".content");
+        const video = chapter.querySelector("video");
+        const opdevideo = chapter.querySelector(".opdevideo");
+
+        gsap.timeline({
+            scrollTrigger: {
+                trigger: chapter,
+                start: "top 80%",
+                end: "top 50%",
+                toggleActions: "play none none reverse",
+            },
+        }).to(content, { opacity: 1, display: "block", duration: 1 });
+
+        if (video) {
+            video.pause();
+
+            gsap.timeline({
+                scrollTrigger: {
+                    trigger: video,
+                    start: "top center",
+                    end: "bottom center",
+                    scrub: 1,
+                    onEnter: () => video.play(),
+                    onEnterBack: () => video.play(),
+                    onLeave: () => video.pause(),
+                },
+            });
+
+            video.onended = () => {
+                if (opdevideo) {
+                    gsap.to(opdevideo, { opacity: 1, duration: 1, display: "flex" });
+                }
+            };
+        }
+    };
+
+    chapters.forEach((chapter) => applyScrollAnimations(chapter));
 });

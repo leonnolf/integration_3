@@ -326,3 +326,67 @@ h2 {
     max-width: 80%; 
     height: auto;
 }
+
+footer {
+    background-color: var(--accent-color);
+    color: #ffffff;
+    text-align: center;
+    padding: 1.5rem 0;
+    font-size: var(--font-small);
+    border-top: 0.25rem solid #000000;
+}
+
+footer p {
+    margin: 0;
+    font-family: var(--newspaper-font);
+    letter-spacing: 0.05rem;
+}
+
+.slot {
+    padding: var(--section-padding);
+    background-color: var(--main-bg);
+    text-align: center;
+    border-top: 0.25rem solid var(--accent-color);
+}
+
+.slot h2 {
+    font-size: var(--font-large);
+    margin-bottom: 1.5rem;
+    color: var(--main-text);
+}
+
+.slot p {
+    font-size: var(--font-medium);
+    line-height: 1.8;
+    margin: 0 auto 2rem;
+    max-width: 40rem;
+    color: var(--main-text);
+}
+
+.slot img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 2rem;
+    border: 0.125rem solid var(--accent-color);
+    border-radius: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    footer {
+        font-size: 0.8rem;
+        padding: 1rem 0;
+    }
+
+    .slot h2 {
+        font-size: 1.8rem;
+    }
+
+    .slot p {
+        font-size: 1rem;
+        padding: 0 1rem;
+    }
+
+    .slot img {
+        max-width: 90%;
+    }
+}
